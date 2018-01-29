@@ -1,15 +1,15 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from settings import database
 
 class Coverage:
     def __init__(self):
         # Load Values and Init Object
-        cnx = mysql.connector.connect(user=database['USER'],
-                                      password=database['PASSWORD'],
+        cnx = mysql.connect(user=database['USER'],
+                                      passwd=database['PASSWORD'],
                                       host=database['HOST'],
-                                      database=database['DATABASE'])
+                                      db=database['DATABASE'])
         mycursor = cnx.cursor()
         mycursor.execute("SELECT * FROM coverage")
         team_coverage = mycursor.fetchall()

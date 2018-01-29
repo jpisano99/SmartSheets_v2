@@ -1,6 +1,6 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from my_functions import stamp_it
 from settings import app,database
 from datetime import datetime
@@ -10,10 +10,10 @@ def export_cust_list(customer_lists):
     print('\texport_cust_list started: ', datetime.now())
 
     # this outputs the customer list in CVS format
-    cnx = mysql.connector.connect(user=database['USER'],
-                                  password=database['PASSWORD'],
+    cnx = mysql.connect(user=database['USER'],
+                                  passwd=database['PASSWORD'],
                                   host=database['HOST'],
-                                  database=database['DATABASE'])
+                                  db=database['DATABASE'])
     mycursor = cnx.cursor()
 
     for customer_list in customer_lists:

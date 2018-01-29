@@ -1,6 +1,6 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from my_functions import table_exists
 from settings import app,database
 from Coverage import Coverage
@@ -12,16 +12,16 @@ def create_cust_data():
     print ('\tcreate_cust_data started: ',datetime.now())
 
     #Create 2 mySQL connections
-    cnx = mysql.connector.connect(user=database['USER'],
-                                  password=database['PASSWORD'],
+    cnx = mysql.connect(user=database['USER'],
+                                  passwd=database['PASSWORD'],
                                   host=database['HOST'],
-                                  database=database['DATABASE'])
+                                  db=database['DATABASE'])
     mycursor = cnx.cursor()
 
-    cnx1 = mysql.connector.connect(user=database['USER'],
-                                   password=database['PASSWORD'],
+    cnx1 = mysql.connect(user=database['USER'],
+                                   passwd=database['PASSWORD'],
                                    host=database['HOST'],
-                                   database=database['DATABASE'])
+                                   db=database['DATABASE'])
     mycursor1 = cnx1.cursor()
 
     #Delete and re-create master customer data as required

@@ -1,18 +1,18 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from settings import app,database
 
 def update_cust_data():
        #This program takes the most current SmartSheet data and updates the master_customer_data table
        #
        # Create 2 mySQL connections
-       cnx = mysql.connector.connect(user=database['USER'], password=database['PASSWORD'], host=database['HOST'],
-                                     database=database['DATABASE'])
+       cnx = mysql.connect(user=database['USER'], passwd=database['PASSWORD'], host=database['HOST'],
+                                     db=database['DATABASE'])
        mycursor = cnx.cursor()
 
-       cnx1 = mysql.connector.connect(user=database['USER'], password=database['PASSWORD'], host=database['HOST'],
-                                      database=database['DATABASE'])
+       cnx1 = mysql.connect(user=database['USER'], passwd=database['PASSWORD'], host=database['HOST'],
+                                      db=database['DATABASE'])
        mycursor1 = cnx1.cursor()
 
        #Loop through the current downloaded smartsheet this will be the main loop

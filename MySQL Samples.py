@@ -1,12 +1,11 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from settings import database
+print(database['PASSWORD'])
 
-
-
-cnx=mysql.connector.connect(user='root',password=database['PASSWORD'],host='localhost',database='ref_db')
-#cnx=mysql.connector.connect(user='root',password=database['PASSWORD'],host='customerdb.cp1kaaiuayns.us-east-1.rds.amazonaws.com',database='ref_db')
+cnx = mysql.connect(user='root', passwd=database['PASSWORD'], host='localhost', db='cust_ref_db')
+#cnx=mysql.connect(user='root',passwd=database['PASSWORD'],host='customerdb.cp1kaaiuayns.us-east-1.rds.amazonaws.com',db='cust_ref_db')
 
 mycursor=cnx.cursor()
 

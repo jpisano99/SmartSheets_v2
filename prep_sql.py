@@ -1,7 +1,7 @@
 __author__ = 'jpisano'
 
 
-import mysql.connector
+import MySQLdb as mysql
 from my_functions import table_exists
 from settings import app,database
 from my_secrets import passwords
@@ -10,7 +10,7 @@ from my_secrets import passwords
 #
 #
 def prep_sql():
-    cnx = mysql.connector.connect(user=database['USER'], password=database['PASSWORD'], host=database['HOST'], database=database['DATABASE'])
+    cnx = mysql.connect(user=database['USER'], passwd=database['PASSWORD'], host=database['HOST'], db=database['DATABASE'])
     mycursor = cnx.cursor()
 
     download_file = app['DOWNLOAD_FILE']

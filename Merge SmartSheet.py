@@ -1,12 +1,12 @@
 __author__ = 'jpisano'
 
-import mysql.connector
+import MySQLdb as mysql
 from settings import database
 
-cnx = mysql.connector.connect(user='root', password=database['PASSWORD'], host='localhost', database='ref_db')
+cnx = mysql.connect(user='root', passwd=database['PASSWORD'], host='localhost', db='cust_ref_db')
 mycursor = cnx.cursor()
 
-cnx1 = mysql.connector.connect(user='root', password=database['PASSWORD'], host='localhost', database='ref_db')
+cnx1 = mysql.connect(user='root', passwd=database['PASSWORD'], host='localhost', db='cust_ref_db')
 mycursor1 = cnx1.cursor()
 
 path_to_import = 'c:/users/jpisano/desktop/ACI to Production Database/Todays Data/'
