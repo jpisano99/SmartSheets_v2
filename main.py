@@ -58,8 +58,8 @@ def main():
     export_cust_list(customer_lists)
 
     end_time = datetime.now()
-    print ('run time: ',end_time - start_time)
-    print ('main module complete: ',datetime.now())
+    print ('run time: ', end_time - start_time)
+    print ('main module complete: ', datetime.now())
 
 
 if __name__ == "__main__":
