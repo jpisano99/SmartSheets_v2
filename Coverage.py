@@ -47,7 +47,6 @@ class Coverage:
                     for team in v:
                         pss.append(team[0])
                         tsa.append(team[1])
-
         tsa = tuple(tsa)
         pss = tuple(pss)
         self.team = [pss,tsa]

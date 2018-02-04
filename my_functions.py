@@ -40,6 +40,8 @@ def csv_from_excel(working_file,sheet_name):
                         # 61 is the lowest Excel Date we can have due to leap year issues
                         if value < 61:
                             value = 61
+                        elif not value:
+                            print ('Date is None>> ',row_idx)
                         tmp_date = datetime(*xlrd.xldate_as_tuple(value, wb.datemode))
                         value = tmp_date.strftime('%Y/%m/%d')
 
@@ -52,6 +54,9 @@ def csv_from_excel(working_file,sheet_name):
                     #Add this cell value to the output row list
                     row_string = row_string + str(value)
                     output_row.append(value)
+
+                    if row_idx == 113596:
+                        print(row_idx, '  ', type(value), value, str(value),cell.ctype)
 
                 # Add the Hash Value for this output_row
                 if row_idx == 0:

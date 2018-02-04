@@ -146,16 +146,22 @@ def prep_sql():
 
     sql = "INSERT INTO master_bookings_data SELECT archive_bookings_data_fy15.* FROM archive_bookings_data_fy15"
     mycursor.execute(sql)
-    print("Gathered FY15 Bookings Data...")
+    print("Gathered FY15 Archived Bookings Data...")
     cnx.commit()
 
     sql = "INSERT INTO master_bookings_data SELECT archive_bookings_data_fy16.* FROM archive_bookings_data_fy16"
     mycursor.execute(sql)
-    print("Gathered FY16 Bookings Data...")
+    print("Gathered FY16 Archived Bookings Data...")
+    cnx.commit()
+
+    sql = "INSERT INTO master_bookings_data SELECT archive_bookings_data_fy17.* FROM archive_bookings_data_fy17"
+    mycursor.execute(sql)
+    print("Gathered FY17 Archived Bookings Data...")
     cnx.commit()
 
     sql = "INSERT INTO master_bookings_data SELECT todays_bookings_data.* FROM todays_bookings_data"
     mycursor.execute(sql)
+    print("Gathered FY18 Current Bookings Data...")
     cnx.commit()
 
     cnx.close()

@@ -6,6 +6,7 @@ from settings import app,database
 from Coverage import Coverage
 from datetime import datetime
 from datetime import date
+import time
 
 def create_cust_data():
     start_time = datetime.now()
@@ -109,8 +110,9 @@ def create_cust_data():
         tsa = ''
         first_date_booked = date(2030, 3, 1) #Random Date in the future
         last_date_booked = date(1900, 3, 1) #Default earliest date for Excel
-
+        x=0
         for order in orders:
+            x=x+1
             # Init per customer counters and variables
             current_customer = order[16]
             current_customer_id = order[17]
@@ -140,18 +142,18 @@ def create_cust_data():
             else:
                 continue # Get the next order since this is not interesting
 
-            # Get the territory this booked in
-            sales_lv1 = order[5]
-            sales_lv2 = order[6]
-            sales_lv3 = order[7]
-            sales_lv4 = order[8]
-            sales_lv5 = order[9]
-            sales_str = order[5]+order[6]+order[7] +order[8] +order[9]
+        # Get the territory this booked in
+        sales_lv1 = order[5]
+        sales_lv2 = order[6]
+        sales_lv3 = order[7]
+        sales_lv4 = order[8]
+        sales_lv5 = order[9]
+        sales_str = order[5]+order[6]+order[7] +order[8] +order[9]
 
-            #Find the team(s) that cover this customer in this territory
-            teams = my_coverage.find_team(sales_str)
-            pss = ' '.join(teams[0])
-            tsa = ' '.join(teams[1])
+        #Find the team(s) that cover this customer in this territory
+        teams = my_coverage.find_team(sales_str)
+        pss = ' '.join(teams[0])
+        tsa = ' '.join(teams[1])
 
         # We are done with this customer
         # Create a summary customer record
